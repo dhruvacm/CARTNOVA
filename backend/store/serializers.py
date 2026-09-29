@@ -1,4 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
+
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -46,9 +48,11 @@ class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
         email = attrs.get("username")
         password = attrs.get("password")
 
+        User = get_user_model()
+
         try:
-            user = self.user_model.objects.get(email__iexact=email)
-        except self.user_model.DoesNotExist:
+            user = User.objects.get(email__iexact=email)
+        except User.DoesNotExist:
             raise serializers.ValidationError(
                 {"detail": "Invalid email or password."}
             )
@@ -61,7 +65,7 @@ class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
         authenticated_user = authenticate(
             request=self.context.get("request"),
             username=user.username,
-            password=password
+            password=password,
         )
 
         if authenticated_user is None:
@@ -69,6 +73,7 @@ class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
                 {"detail": "Invalid email or password."}
             )
 
+        # SimpleJWT expects the actual username here
         attrs["username"] = user.username
 
         return super().validate(attrs)
