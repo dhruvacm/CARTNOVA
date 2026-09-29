@@ -573,7 +573,9 @@ class Command(BaseCommand):
         for data in PRODUCTS:
             category_name = data.pop("category")
 
-            category = Category.objects.get(name=category_name)
+            category, created = Category.objects.get_or_create(
+    name=category_name
+)
 
             product, was_created = Product.objects.update_or_create(
                 id=data["id"],
