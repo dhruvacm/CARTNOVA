@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | CartNova</title>
+    <meta name="description" content="Your CartNova order has been placed successfully">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+    <header class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo" aria-label="CartNova Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="21" r="1" />
+                    <circle cx="19" cy="21" r="1" />
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                </svg>
+                <span>Cart<span class="logo-accent">Nova</span></span>
+            </a>
+            <nav class="navbar-nav" id="navbarNav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="products.html#categories" class="nav-link">Categories</a>
+                <a href="index.html#about" class="nav-link">About</a>
+            </nav>
+            <div class="navbar-actions">
+                <button class="action-btn" id="searchToggle" aria-label="Search">
+                    <i data-lucide="search"></i>
+                </button>
+                <a href="wishlist.html" class="action-btn" aria-label="Wishlist">
+                    <i data-lucide="heart"></i>
+                    <span class="action-badge" id="wishlistCount">0</span>
+                </a>
+                <a href="cart.html" class="action-btn" aria-label="Cart">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="action-badge" id="cartCount">0</span>
+                </a>
+                <div class="auth-nav" id="authNav">
+                    <a href="login.html" class="btn btn-sm btn-primary">Login</a>
+                </div>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link"><i data-lucide="home"></i> Home</a>
+            <a href="products.html" class="mobile-link"><i data-lucide="grid-3x3"></i> Products</a>
+            <a href="products.html#categories" class="mobile-link"><i data-lucide="layout-grid"></i> Categories</a>
+            <a href="index.html#about" class="mobile-link"><i data-lucide="info"></i> About</a>
+            <a href="wishlist.html" class="mobile-link"><i data-lucide="heart"></i> Wishlist</a>
+            <a href="orders.html" class="mobile-link"><i data-lucide="package"></i> Orders</a>
+            <a href="profile.html" class="mobile-link"><i data-lucide="user"></i> Profile</a>
+            <div class="mobile-auth" id="mobileAuth">
+                <a href="login.html" class="btn btn-primary btn-block">Login</a>
+            </div>
+        </div>
+        <div class="search-overlay" id="searchOverlay">
+            <div class="container">
+                <form class="search-form" id="globalSearchForm" role="search">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="globalSearchInput" placeholder="Search products..."
+                        aria-label="Search products" autocomplete="off">
+                    <button type="button" class="search-close" id="searchClose" aria-label="Close search"><i
+                            data-lucide="x"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <div class="order-success" id="orderConfirmedContent">
+                <div class="success-icon">
+                    <i data-lucide="loader-2" style="animation: spin 1s linear infinite;"></i>
+                </div>
+                <h2 class="success-title">Loading your order...</h2>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo" aria-label="CartNova Home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1" />
+                            <circle cx="19" cy="21" r="1" />
+                            <path
+                                d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                        </svg>
+                        <span>Cart<span class="logo-accent">Nova</span></span>
+                    </a>
+                    <p class="footer-desc">Your next-generation shopping experience. Discover products you'll love and
+                        enjoy simple, secure online shopping.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="support.html#faq">FAQ</a></li>
+                        <li><a href="support.html#shipping">Shipping</a></li>
+                        <li><a href="support.html#returns">Returns</a></li>
+                        <li><a href="support.html#privacy">Privacy Policy</a></li>
+                        <li><a href="support.html#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                                data-lucide="github"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i
+                                data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CartNova. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal" id="modalContent"></div>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

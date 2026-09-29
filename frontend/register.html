@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | CartNova</title>
+    <meta name="description" content="Create a new CartNova account">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <!-- Left: Brand Panel -->
+            <div class="auth-brand">
+                <a href="index.html" class="auth-brand-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                    <span>Cart<span style="color: rgba(255,255,255,0.8);">Nova</span></span>
+                </a>
+                <h2 class="auth-brand-title">Shop everything you love, all in one place.</h2>
+                <p class="auth-brand-text">Join thousands of happy customers who trust CartNova for their everyday shopping needs.</p>
+            </div>
+
+            <!-- Right: Registration form -->
+            <div class="auth-form-wrapper">
+                <form class="auth-form" id="registerForm" novalidate>
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Join CartNova today</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="regName">Full Name *</label>
+                            <input type="text" class="form-input" id="regName" placeholder="Full name" required>
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regUsername">Username *</label>
+                            <input type="text" class="form-input" id="regUsername" placeholder="Username" required>
+                            <span class="form-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regEmail">Email *</label>
+                        <input type="email" class="form-input" id="regEmail" placeholder="Email address" required>
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPhone">Phone</label>
+                        <input type="tel" class="form-input" id="regPhone" placeholder="Phone number">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="regPassword">Password *</label>
+                            <div class="password-wrapper">
+                                <input type="password" class="form-input" id="regPassword" placeholder="Min. 8 characters" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle password"><i data-lucide="eye"></i></button>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regConfirmPassword">Confirm Password *</label>
+                            <div class="password-wrapper">
+                                <input type="password" class="form-input" id="regConfirmPassword" placeholder="Confirm password" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle password"><i data-lucide="eye"></i></button>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 16px;">
+                        <label class="form-check">
+                            <input type="checkbox" class="form-check-input" id="regTerms" required>
+                            <span class="form-check-label">I agree to the <a href="#" style="color: var(--primary);">Terms & Conditions</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 20px;">Create Account</button>
+
+                    <p class="auth-link" style="margin-top: 24px; text-align: center;">Already have an account? <a href="login.html" style="color: var(--primary);">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal" id="modalContent"></div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
