@@ -1,5 +1,9 @@
 from django.core.management.base import BaseCommand
+from django.db import IntegrityError
+from django.utils.text import slugify
+
 from store.models import Category, Product
+
 
 
 PRODUCTS = [
@@ -567,15 +571,39 @@ class Command(BaseCommand):
     help = "Seed CartNova products into the database"
 
     def handle(self, *args, **options):
-        created = 0
-        updated = 0
+        created_count = 0
+        updated_count = 0
 
-        for data in PRODUCTS:
+        for original_data in PRODUCTS:
+            # Copy the dictionary so PRODUCTS itself is not modified.
+            data = original_data.copy()
+
             category_name = data.pop("category")
+            category_slug = slugify(category_name)
 
-            category, created = Category.objects.get_or_create(
-    name=category_name
-)
+            # First try to find the category by name.
+            category = Category.objects.filter(
+                name=category_name
+            ).first()
+
+            if category is None:
+                # If the category doesn't exist by name, try its slug.
+                category = Category.objects.filter(
+                    slug=category_slug
+                ).first()
+
+            if category is None:
+                # Create a new category only when neither name nor slug exists.
+                category = Category.objects.create(
+                    name=category_name,
+                    slug=category_slug,
+                )
+            else:
+                # Keep the existing category's name/slug.
+                # This avoids UNIQUE slug conflicts on Render.
+                if category.name != category_name:
+                    category.name = category_name
+                    category.save(update_fields=["name"])
 
             product, was_created = Product.objects.update_or_create(
                 id=data["id"],
@@ -586,13 +614,13 @@ class Command(BaseCommand):
             )
 
             if was_created:
-                created += 1
+                created_count += 1
             else:
-                updated += 1
+                updated_count += 1
 
         self.stdout.write(
             self.style.SUCCESS(
                 f"CartNova products seeded successfully! "
-                f"Created: {created}, Updated: {updated}"
+                f"Created: {created_count}, Updated: {updated_count}"
             )
         )
