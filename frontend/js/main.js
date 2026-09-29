@@ -359,7 +359,7 @@ async function loadCategories() {
 
     try {
         const response = await fetch(
-            "http://127.0.0.1:8000/api/categories/"
+            "https://cartnova-backend-ae6c.onrender.com/api/categories/"
         );
 
         if (!response.ok) {

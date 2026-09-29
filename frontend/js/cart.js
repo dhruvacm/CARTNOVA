@@ -1,7 +1,6 @@
 'use strict';
 
-const CART_API_URL = "http://127.0.0.1:8000/api/cart";
-
+const CART_API_URL = "https://cartnova-backend-ae6c.onrender.com/api/cart";
 
 function getCart() {
     try {

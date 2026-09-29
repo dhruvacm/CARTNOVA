@@ -2,8 +2,7 @@
 
 let products = [];
 
-const PRODUCTS_API_URL = "http://127.0.0.1:8000/api/products/";
-
+const PRODUCTS_API_URL = "https://cartnova-backend-ae6c.onrender.com/api/products/";
 async function loadProducts() {
     try {
         const response = await fetch(PRODUCTS_API_URL);

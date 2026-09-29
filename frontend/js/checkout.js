@@ -1,6 +1,6 @@
 'use strict';
 
-const ORDERS_API_URL = "http://127.0.0.1:8000/api/orders";
+const ORDERS_API_URL = "https://cartnova-backend-ae6c.onrender.com/api/orders";
 
 // Guards against a double order: both the Place Order button's click
 // handler and the delivery form's submit handler call handleOrderSubmit,

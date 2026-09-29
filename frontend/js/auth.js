@@ -1,7 +1,7 @@
 'use strict';
 
 // Pre-seed demo account
-const AUTH_API_URL = "http://127.0.0.1:8000/api/auth";
+const AUTH_API_URL = "https://cartnova-backend-ae6c.onrender.com/api/auth";
 
 function getAccessToken() {
     return localStorage.getItem("cartNovaAccessToken");
