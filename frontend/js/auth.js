@@ -361,7 +361,6 @@ function initLoginPage() {
         }
     });
 }
-
 function initRegisterPage() {
     if (isLoggedIn()) {
         window.location.href = 'index.html';
@@ -371,31 +370,92 @@ function initRegisterPage() {
     const registerForm = document.getElementById('registerForm');
     if (!registerForm) return;
 
+    // Password toggle
+    const passwordToggle = document.getElementById('regPasswordToggle');
+    const passwordInput = document.getElementById('regPassword');
+
+    if (passwordToggle && passwordInput) {
+        passwordToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.innerHTML =
+                    '<i data-lucide="eye-off"></i>';
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.innerHTML =
+                    '<i data-lucide="eye"></i>';
+            }
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    }
+
+    // Confirm password toggle
+    const confirmPasswordToggle =
+        document.getElementById('regConfirmPasswordToggle');
+
+    const confirmPasswordInput =
+        document.getElementById('regConfirmPassword');
+
+    if (confirmPasswordToggle && confirmPasswordInput) {
+        confirmPasswordToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.type = 'text';
+                confirmPasswordToggle.innerHTML =
+                    '<i data-lucide="eye-off"></i>';
+            } else {
+                confirmPasswordInput.type = 'password';
+                confirmPasswordToggle.innerHTML =
+                    '<i data-lucide="eye"></i>';
+            }
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    }
+
+    // Registration form
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const data = {
-            name: document.getElementById('regName').value,
-            username: document.getElementById('regUsername').value,
-            email: document.getElementById('regEmail').value,
-            phone: document.getElementById('regPhone').value,
+            name: document.getElementById('regName').value.trim(),
+            username: document.getElementById('regUsername').value.trim(),
+            email: document.getElementById('regEmail').value.trim(),
+            phone: document.getElementById('regPhone').value.trim(),
             password: document.getElementById('regPassword').value,
-            confirmPassword: document.getElementById('regConfirmPassword').value
+            confirmPassword:
+                document.getElementById('regConfirmPassword').value
         };
 
         if (!document.getElementById('regTerms').checked) {
-            if (typeof showToast === 'function') showToast('You must agree to terms', 'warning');
+            if (typeof showToast === 'function') {
+                showToast('You must agree to terms', 'warning');
+            }
             return;
         }
 
         const res = await registerUser(data);
+
         if (res.success) {
-            if (typeof showToast === 'function') showToast(res.message, 'success');
+            if (typeof showToast === 'function') {
+                showToast(res.message, 'success');
+            }
+
             setTimeout(() => {
                 window.location.href = 'login.html';
             }, 1000);
         } else {
-            if (typeof showToast === 'function') showToast(res.message, 'error');
+            if (typeof showToast === 'function') {
+                showToast(res.message, 'error');
+            }
         }
     });
 }
