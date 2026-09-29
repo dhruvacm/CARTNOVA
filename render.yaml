@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cartnova-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn cartnova.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.6
